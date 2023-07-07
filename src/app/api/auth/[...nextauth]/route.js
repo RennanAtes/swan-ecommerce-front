@@ -42,11 +42,9 @@ export const authOptions = {
           });
 
           // Faça algo com a resposta da API do Django, se necessário
-          console.log(response.data);
           session.Django = response.data.access_token
           return session;
         } catch (error) {
-          console.error(error);
         }
       } else {
         console.log('session.user não está definido');

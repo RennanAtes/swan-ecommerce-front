@@ -1,3 +1,4 @@
+
 import { Inter } from 'next/font/google'
 import Provider from '../components/Provider'
 import { getServerSession } from "next-auth"
@@ -5,7 +6,7 @@ import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route"
 import { useSession } from 'next-auth/react';
 import HeaderLogado from '../components/HeaderLogado';
-
+import AuthChecker from '../components/AuthChecker';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -15,17 +16,15 @@ export const metadata = {
 
 export default async function RootLayout({children,}: {children: React.ReactNode}) {
   
-  const session = await getServerSession(authOptions);
-  if(!session) redirect('/')
-
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        
         <Provider>
-          <HeaderLogado />
-          {children}
+          <AuthChecker>
+            <HeaderLogado />
+            {children}
+          </AuthChecker>
         </Provider>
       </body>
     </html>
