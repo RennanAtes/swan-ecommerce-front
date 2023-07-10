@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import axios from "axios";
+import { setCookie } from "nookies";
 
 
 export const authOptions = {
@@ -27,32 +28,14 @@ export const authOptions = {
       return token;
     },
     async session({ session, token, user }) {
-      console.log('aqui é o session ')
       session.accessToken = token.accessToken;
-      
-
-      if (session.user) {
-        const { name, email } = session.user;
-
-        try {
-          console.log('Vai chamar o axios')
-          const response = await axios.post("http://127.0.0.1:8000/api/authentication", {
-            username: name,
-            email,
-          });
-
-          // Faça algo com a resposta da API do Django, se necessário
-          session.Django = response.data.access_token
-          return session;
-        } catch (error) {
-        }
-      } else {
-        console.log('session.user não está definido');
-      }
-      
-      // return session;
+  
+      return session;
     },
-    },
+
+
+    }
+    
   }
 
 const handler = NextAuth(authOptions)
