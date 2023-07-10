@@ -1,13 +1,29 @@
+"use client"
 import Link from "next/link";
+import { styled } from 'styled-components';
+
+
+const HeaderStyled = styled.header`
+    height: 80px;
+    border-bottom: 2px solid orange;
+    display: flex;
+    align-items: center;
+
+`
+const ButtonMenu = styled.button`
+    float: right;
+
+`
+
+
+
 
 export default function Header(){
     return (
-        <header className="">
-            <div className="gap-5 flex">
-                <Link href={'/protegida'}>Pagina protegida</Link>
-                <Link href={'/semprotecao'}>Sem protecao</Link>
-                <Link href={'/login'}>Login</Link>
+        <HeaderStyled>
+            <div className="container">
+                <ButtonMenu>Menu</ButtonMenu>
             </div>
-        </header>
+        </HeaderStyled>
     )
 }
