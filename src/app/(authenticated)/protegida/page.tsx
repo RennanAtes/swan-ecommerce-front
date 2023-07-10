@@ -1,37 +1,21 @@
-'use client'
-import HeaderLogado from "@/app/components/HeaderLogado";
+"use client"
+import SidebarMenu from "@/app/components/SideBarMenu";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { parseCookies } from "nookies";
 
-export default function PaginaProtegida(){
+export default function PaginaProtegida() {
+  const cookies = parseCookies();
 
-    // const { data : session}  = useSession({
-    //     required: true,
-    //     onUnauthenticated() {
-    //         redirect('/')
-    //     }
-    // });
-    
+  const { data: session } = useSession();
+    console.log(session);
+  return (
+    <div>
 
+      <h1>Protegido</h1>
 
+      <h2>{session?.user?.name}</h2>
+      <h2>{session?.user?.email}</h2>
 
-    return (
-        <div>
-            <h1>Protegido</h1>
-            {/* { session ? 
-            <div> 
-                <HeaderLogado /> 
-                <h1>Protegida</h1>
-            
-            
-            </div> 
-            : 
-            <div>
-                
-            </div> 
-
-            }
-             */}
-        </div>
-    )
+    </div>
+  );
 }
