@@ -1,5 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.css';
 
+import 'bootstrap/dist/css/bootstrap.css';
 import { Inter } from 'next/font/google'
 import Header from '../components/Header'
 
@@ -18,9 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        
-        <Header />
-        {children}
+        <div className='container-fluid p-0'>
+          <Header />
+          {children}
+        </div>
         </body>
     </html>
   )

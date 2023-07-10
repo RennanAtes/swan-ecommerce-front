@@ -3,36 +3,38 @@ import axios from 'axios';
 import { useState } from 'react';
 import { styled } from 'styled-components';
 import { parseCookies } from "nookies";
+import { title } from 'process';
 
 
 
 const BoxCreatePage = styled.div`
 display: flex;
 min-height: 150px;
-border: 2px solid black;
+
 border-radius: 10px;
 padding: 15px;
 flex-direction: column;
 `
 const ButtonCreatePage = styled.div`
-    margin: 10px;
+
+    margin-top: 10px;
     text-align: center;
-    background-color: blue;
+    background-color: #ffa200;
     color: white;
     padding: 5px;
     border-radius: 10px;
     transition: 0.2s;
+    border: 2px solid #ffa200;
     &:hover{
-        transform: scale(1.05);
-        background-color: black;
-        color: white;
+        background-color: white;
+        color: #ffa200;
+        border: 2px solid #ffa200;
     }
 `
 
 const InputCreatePage = styled.input`
-
     background-color: transparent;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #ffa200;
     outline: none;
 `
 
@@ -43,6 +45,13 @@ const SectionCreatePage = styled.div`
     width: 100%;
     height: 90vh;
 `
+
+const SelectLayout = styled.select`
+  margin-top: 10px;
+  border-bottom: 2px solid #ffa200;
+
+`
+
 
 
 
@@ -71,13 +80,19 @@ export default function CriarPagina() {
     return (
       <SectionCreatePage>
         <BoxCreatePage>
-          <h1 className="p-5">CreatePage</h1>
+          <h1 className="p-5">Crie a sua pagina!</h1>
           <InputCreatePage
-            className="border-b-2 border-black"
             placeholder="Nome da página"
             value={nomePagina}
             onChange={(e:any) => setNomePagina(e.target.value)}
           />
+
+          <SelectLayout>
+            <option>Layout 1</option>
+            <option>Layout 2</option>
+          </SelectLayout>
+
+
           <ButtonCreatePage onClick={criar_pagina}>Criar página</ButtonCreatePage>
         </BoxCreatePage>
       </SectionCreatePage>

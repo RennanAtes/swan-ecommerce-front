@@ -28,15 +28,14 @@ export default function HeaderLogado(){
     return (
         <header>
             <DivHeader>
-            <SidebarMenu/>
+                
+                <SidebarMenu/>
+                
                 <div className=" gap-10 flex duration-100 hover:text-gray-500 mr-20">
-                <Link className=" text-gray-500  no-underline duration-100 hover:scale-125 hover:text-black  " href={'/'}>Home</Link>
+                    <Link className=" text-gray-500  no-underline duration-100 hover:scale-125 hover:text-black  " href={'/'}>Home</Link>
                     <Link className=" text-gray-500  no-underline duration-100 hover:scale-125 hover:text-black  " href={'/protegida'}>Pagina protegida</Link>
-                    
-
                     <Link className="text-gray-500 no-underline duration-100 hover:scale-125 hover:text-black  " href={'/criar_pagina'}>Criar Pagina</Link>
                     <button className="text-gray-500 no-underline duration-100 hover:scale-125 hover:text-black  " onClick={() => signOut()}>Sair</button>
-                    
                 </div>
             </DivHeader>
             
